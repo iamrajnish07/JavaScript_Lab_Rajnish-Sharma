@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Modern Quiz App</title>
+
+<style>
+    body {
+        margin: 0;
+        font-family: 'Poppins', sans-serif;
+        background: linear-gradient(135deg, #1e3c72, #2a5298);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        color: white;
+    }
+
+    .quiz-container {
+        width: 400px;
+        padding: 25px;
+        border-radius: 15px;
+        background: rgba(255,255,255,0.1);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    }
+
+    h2 {
+        text-align: center;
+    }
+
+    .progress {
+        height: 8px;
+        background: rgba(255,255,255,0.2);
+        border-radius: 10px;
+        margin-bottom: 15px;
+        overflow: hidden;
+    }
+
+    .progress-bar {
+        height: 100%;
+        background: #00f2fe;
+        width: 0%;
+        transition: 0.3s;
+    }
+
+    .question {
+        margin-bottom: 15px;
+        font-size: 18px;
+    }
+
+    .option {
+        display: block;
+        padding: 10px;
+        margin: 8px 0;
+        border-radius: 8px;
+        background: rgba(255,255,255,0.2);
+        cursor: pointer;
+        transition: 0.2s;
+    }
+
+    .option:hover {
+        background: rgba(255,255,255,0.4);
+    }
+
+    .selected {
+        background: #00c6ff !important;
+    }
+
+    .buttons {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 15px;
+    }
+
+    button {
+        padding: 10px 15px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        background: #00c6ff;
+        color: black;
+        font-weight: bold;
+    }
+
+    .result {
+        text-align: center;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="quiz-container">
+    <h2>🚀 Quiz App</h2>
+
+    <div class="progress">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <div id="quizBox"></div>
+
+    <div class="buttons">
+        <button onclick="prevQuestion()">Prev</button>
+        <button onclick="nextQuestion()">Next</button>
+    </div>
+</div>
+
+<script>
+
+const questions = [
+    { question: "What is HTML?", options: ["Programming Language","Markup Language","Database"], correct: 1 },
+    { question: "Which is used for styling?", options: ["HTML","CSS","Python"], correct: 1 },
+    { question: "Which language is used for logic?", options: ["CSS","JavaScript","HTML"], correct: 1 },
+    { question: "Which tag is heading?", options: ["<p>","<h1>","<div>"], correct: 1 },
+    { question: "Who developed JavaScript?", options: ["Microsoft","Netscape","Google"], correct: 1 },
+    { question: "JS comments symbol?", options: ["//","<!-- -->","#"], correct: 0 }
+];
+
+let current = 0;
+let answers = new Array(questions.length).fill(null);
+
+function loadQuestion() {
+    let q = questions[current];
+
+    let html = `<div class="question">${current+1}. ${q.question}</div>`;
+
+    q.options.forEach((opt, i) => {
+        let selected = answers[current] === i ? "selected" : "";
+        html += `<div class="option ${selected}" onclick="selectOption(${i})">${opt}</div>`;
+    });
+
+    document.getElementById("quizBox").innerHTML = html;
+
+    updateProgress();
+}
+
+function selectOption(i) {
+    answers[current] = i;
+    loadQuestion();
+}
+
+function nextQuestion() {
+    if (current < questions.length - 1) {
+        current++;
+        loadQuestion();
+    } else {
+        showResult();
+    }
+}
+
+function prevQuestion() {
+    if (current > 0) {
+        current--;
+        loadQuestion();
+    }
+}
+
+function updateProgress() {
+    let percent = ((current + 1) / questions.length) * 100;
+    document.getElementById("progressBar").style.width = percent + "%";
+}
+
+function showResult() {
+    let score = 0;
+
+    answers.forEach((ans, i) => {
+        if (ans === questions[i].correct) score++;
+    });
+
+    let msg = score >= 4 ? "🔥 Great Job!" : "😅 Keep Practicing!";
+
+    document.querySelector(".quiz-container").innerHTML = `
+        <div class="result">
+            <h2>Your Score: ${score}/${questions.length}</h2>
+            <p>${msg}</p>
+            <button onclick="location.reload()">Restart</button>
+        </div>
+    `;
+}
+
+// Init
+loadQuestion();
+
+</script>
+
+</body>
+</html>

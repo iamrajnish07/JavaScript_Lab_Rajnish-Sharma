@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Neumorphic To-Do</title>
+
+<style>
+    body {
+        margin: 0;
+        font-family: 'Poppins', sans-serif;
+        background: #e0e5ec;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    .app {
+        width: 380px;
+        padding: 25px;
+        border-radius: 20px;
+        background: #e0e5ec;
+        box-shadow: 10px 10px 20px #a3b1c6,
+                    -10px -10px 20px #ffffff;
+    }
+
+    h2 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #333;
+    }
+
+    .input-box {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 20px;
+    }
+
+    input {
+        flex: 1;
+        padding: 12px;
+        border: none;
+        border-radius: 10px;
+        outline: none;
+        background: #e0e5ec;
+        box-shadow: inset 5px 5px 10px #a3b1c6,
+                    inset -5px -5px 10px #ffffff;
+    }
+
+    button {
+        padding: 12px 15px;
+        border: none;
+        border-radius: 10px;
+        background: #e0e5ec;
+        cursor: pointer;
+        box-shadow: 5px 5px 10px #a3b1c6,
+                    -5px -5px 10px #ffffff;
+        transition: 0.2s;
+    }
+
+    button:active {
+        box-shadow: inset 5px 5px 10px #a3b1c6,
+                    inset -5px -5px 10px #ffffff;
+    }
+
+    ul {
+        list-style: none;
+        padding: 0;
+        max-height: 220px;
+        overflow-y: auto;
+    }
+
+    li {
+        padding: 12px;
+        margin-bottom: 10px;
+        border-radius: 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: #e0e5ec;
+        box-shadow: 5px 5px 10px #a3b1c6,
+                    -5px -5px 10px #ffffff;
+    }
+
+    .done {
+        text-decoration: line-through;
+        opacity: 0.6;
+    }
+
+    .delete {
+        background: #ff6b6b;
+        color: white;
+        border-radius: 6px;
+        padding: 5px 10px;
+        box-shadow: none;
+    }
+
+    .footer {
+        margin-top: 15px;
+        text-align: center;
+        font-size: 14px;
+        color: #555;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="app">
+    <h2>📝 My Tasks</h2>
+
+    <div class="input-box">
+        <input type="text" id="taskInput" placeholder="Add new task...">
+        <button onclick="addTask()">+</button>
+    </div>
+
+    <ul id="taskList"></ul>
+
+    <div class="footer">
+        Tasks: <span id="count">0</span>
+    </div>
+</div>
+
+<script>
+
+const input = document.getElementById("taskInput");
+const list = document.getElementById("taskList");
+const count = document.getElementById("count");
+
+// Add with Enter key
+input.addEventListener("keypress", e => {
+    if (e.key === "Enter") addTask();
+});
+
+function addTask() {
+    let text = input.value.trim();
+    if (text === "") return;
+
+    let li = document.createElement("li");
+
+    let span = document.createElement("span");
+    span.innerText = text;
+
+    // Toggle complete
+    span.onclick = () => {
+        span.classList.toggle("done");
+        save();
+    };
+
+    let del = document.createElement("button");
+    del.innerText = "X";
+    del.className = "delete";
+
+    del.onclick = () => {
+        li.remove();
+        updateCount();
+        save();
+    };
+
+    li.appendChild(span);
+    li.appendChild(del);
+    list.appendChild(li);
+
+    input.value = "";
+    updateCount();
+    save();
+}
+
+// Update count
+function updateCount() {
+    count.innerText = list.children.length;
+}
+
+// Save
+function save() {
+    localStorage.setItem("todo", list.innerHTML);
+}
+
+// Load
+window.onload = () => {
+    list.innerHTML = localStorage.getItem("todo") || "";
+
+    // Rebind events
+    document.querySelectorAll("li span").forEach(span => {
+        span.onclick = () => {
+            span.classList.toggle("done");
+            save();
+        };
+    });
+
+    document.querySelectorAll(".delete").forEach(btn => {
+        btn.onclick = () => {
+            btn.parentElement.remove();
+            updateCount();
+            save();
+        };
+    });
+
+    updateCount();
+};
+
+</script>
+
+</body>
+</html>

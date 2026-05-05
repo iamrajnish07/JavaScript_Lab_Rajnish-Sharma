@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>BOM Dashboard</title>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+        height: 100vh;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #fff;
+    }
+
+    .container {
+        width: 90%;
+        max-width: 800px;
+        padding: 30px;
+        border-radius: 20px;
+        backdrop-filter: blur(15px);
+        background: rgba(255,255,255,0.1);
+        box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+        text-align: center;
+    }
+
+    h1 {
+        margin-bottom: 20px;
+    }
+
+    .buttons {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        gap: 10px;
+        margin-bottom: 20px;
+    }
+
+    button {
+        padding: 12px;
+        border: none;
+        border-radius: 10px;
+        background: rgba(255,255,255,0.2);
+        color: white;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    button:hover {
+        background: rgba(255,255,255,0.4);
+        transform: scale(1.05);
+    }
+
+    #output {
+        padding: 15px;
+        border-radius: 10px;
+        background: rgba(0,0,0,0.3);
+        min-height: 100px;
+        text-align: left;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>🌐 BOM Dashboard</h1>
+
+    <div class="buttons">
+        <button onclick="showWindow()">Window</button>
+        <button onclick="showHistory()">History</button>
+        <button onclick="showNavigator()">Navigator</button>
+        <button onclick="showScreen()">Screen</button>
+        <button onclick="showLocation()">Location</button>
+        <button onclick="showCookies()">Cookies</button>
+        <button onclick="getLocation()">Geo Location</button>
+    </div>
+
+    <div id="output">Click a button to see info...</div>
+</div>
+
+<script>
+
+// Window Object
+function showWindow() {
+    document.getElementById("output").innerHTML =
+        "Inner Width: " + window.innerWidth + "<br>" +
+        "Inner Height: " + window.innerHeight;
+}
+
+// History Object
+function showHistory() {
+    document.getElementById("output").innerHTML =
+        "History Length: " + history.length;
+}
+
+// Navigator Object
+function showNavigator() {
+    document.getElementById("output").innerHTML =
+        "Browser: " + navigator.userAgent + "<br>" +
+        "Language: " + navigator.language + "<br>" +
+        "Online: " + navigator.onLine;
+}
+
+// Screen Object
+function showScreen() {
+    document.getElementById("output").innerHTML =
+        "Width: " + screen.width + "<br>" +
+        "Height: " + screen.height + "<br>" +
+        "Color Depth: " + screen.colorDepth;
+}
+
+// Location Object
+function showLocation() {
+    document.getElementById("output").innerHTML =
+        "URL: " + location.href + "<br>" +
+        "Hostname: " + location.hostname + "<br>" +
+        "Path: " + location.pathname;
+}
+
+// Cookies
+function showCookies() {
+    document.cookie = "username=Rajnish";
+    document.getElementById("output").innerHTML =
+        "Cookies: " + document.cookie;
+}
+
+// Geolocation
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+            document.getElementById("output").innerHTML =
+                "Latitude: " + position.coords.latitude + "<br>" +
+                "Longitude: " + position.coords.longitude;
+        });
+    } else {
+        document.getElementById("output").innerHTML = "Geolocation not supported";
+    }
+}
+
+</script>
+
+</body>
+</html>
