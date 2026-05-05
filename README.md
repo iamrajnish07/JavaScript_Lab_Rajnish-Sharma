@@ -80,7 +80,7 @@ Users can add, delete, and manage tasks efficiently.
 *Add your screenshot here*
 
 ```
-![ToDo Output](Exp-4/image.png)
+<img src="Exp-4/image.png" width="600">
 ```
 
 ---
