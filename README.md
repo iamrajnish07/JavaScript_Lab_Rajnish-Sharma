@@ -46,7 +46,7 @@ It helps understand how JavaScript interacts with the browser environment.
 *Add your screenshot here*
 
 ```
-Exp-3/image.png
+![image alt](Exp-3/image.png)
 ```
 
 ---
