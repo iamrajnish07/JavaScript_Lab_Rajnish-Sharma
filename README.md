@@ -43,11 +43,7 @@ It helps understand how JavaScript interacts with the browser environment.
 
 ## 🖼️ Output Screenshot
 
-*Add your screenshot here*
-
-```
-Exp-3/image.png
-```
+![Exp-3 Output](Exp-3/image.png)
 
 ---
 
@@ -77,11 +73,7 @@ Users can add, delete, and manage tasks efficiently.
 
 ## 🖼️ Output Screenshot
 
-*Add your screenshot here*
-
-```
-<img src="Exp-4/image.png" width="600">
-```
+![Exp-4 Output](Exp-4/image.png)
 
 ---
 
@@ -109,11 +101,7 @@ A modern **Quiz Application** that allows users to answer multiple-choice questi
 
 ## 🖼️ Output Screenshot
 
-*Add your screenshot here*
-
-```
-Exp-5/image.png
-```
+![Exp-5 Output](Exp-5/image.png)
 
 ---
 
