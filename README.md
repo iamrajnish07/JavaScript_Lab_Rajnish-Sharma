@@ -46,7 +46,7 @@ It helps understand how JavaScript interacts with the browser environment.
 *Add your screenshot here*
 
 ```
-Exp-3/image.png
+![Exp-3 Output](Exp-3/image.png)
 ```
 
 ---
