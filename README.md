@@ -1,6 +1,4 @@
-# 🌐 Web Development Lab Experiments
-
-This repository contains three fundamental **JavaScript-based web development experiments** focusing on **DOM (Document Object Model)** and **BOM (Browser Object Model)** concepts.
+# 🌐 JavaScript Lab Experiments
 
 ---
 
@@ -14,14 +12,14 @@ This repository contains three fundamental **JavaScript-based web development ex
 
 ---
 
-# 🧪 1. Browser Object Model (BOM) Demo
+# 1. Browser Object Model (BOM) Demo
 
-## 📖 Description
+## Description
 
 This experiment demonstrates the usage of various **Browser Object Model (BOM)** objects in JavaScript.
 It helps understand how JavaScript interacts with the browser environment.
 
-## 🔧 Concepts Used
+## Concepts Used
 
 * Window Object
 * History Object
@@ -31,7 +29,7 @@ It helps understand how JavaScript interacts with the browser environment.
 * Cookies
 * Geolocation API
 
-## ⚙️ Features
+## Features
 
 * Display browser window size
 * Show browsing history length
@@ -41,7 +39,7 @@ It helps understand how JavaScript interacts with the browser environment.
 * Store and display cookies
 * Access user’s geographical location
 
-## 🖼️ Output Screenshot
+## Output Screenshot
 
 *Add your screenshot here*
 
@@ -50,21 +48,21 @@ It helps understand how JavaScript interacts with the browser environment.
 
 ---
 
-# 🧪 4. To-Do List using DOM
+# 4. To-Do List using DOM
 
-## 📖 Description
+#Description
 
 A dynamic **To-Do List Web Application** built using DOM manipulation.
 Users can add, delete, and manage tasks efficiently.
 
-## 🔧 Concepts Used
+## Concepts Used
 
 * DOM Manipulation (`createElement`, `appendChild`)
 * Event Handling
 * `querySelector` / `getElementById`
 * Local Storage
 
-## ⚙️ Features
+## Features
 
 * Add new tasks
 * Delete individual tasks
@@ -74,7 +72,7 @@ Users can add, delete, and manage tasks efficiently.
 * Save tasks using localStorage
 * Add task using Enter key
 
-## 🖼️ Output Screenshot
+## Output Screenshot
 
 ![Exp-4 Output](Exp-4/image.png)
 
@@ -82,18 +80,18 @@ Users can add, delete, and manage tasks efficiently.
 
 # 🧪 5. Interactive Quiz Application
 
-## 📖 Description
+## Description
 
 A modern **Quiz Application** that allows users to answer multiple-choice questions and get instant results.
 
-## 🔧 Concepts Used
+## Concepts Used
 
 * Arrays & Objects
 * DOM Rendering
 * Event Handling
 * State Management
 
-## ⚙️ Features
+## Features
 
 * Multiple choice questions
 * Next/Previous navigation
@@ -102,13 +100,13 @@ A modern **Quiz Application** that allows users to answer multiple-choice questi
 * Result display with feedback
 * Restart quiz option
 
-## 🖼️ Output Screenshot
+## Output Screenshot
 
 ![Exp-5 Output](Exp-5/image.png)
 
 ---
 
-# 🚀 Technologies Used
+# Technologies Used
 
 * HTML5
 * CSS3
